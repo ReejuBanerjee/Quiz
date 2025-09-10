@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .question { margin-bottom: 15px; }
+    button { padding: 10px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <h1>MCQ Quiz</h1>
+
+  <form id="quizForm">
+    <!-- Question 1 -->
+    <div class="question">
+      <p>1. What is the capital of India?</p>
+      <input type="radio" name="q1" value="A"> A) Mumbai <br>
+      <input type="radio" name="q1" value="B"> B) New Delhi <br>
+      <input type="radio" name="q1" value="C"> C) Kolkata <br>
+      <input type="radio" name="q1" value="D"> D) Chennai <br>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+      <p>2. Which language is used for web pages?</p>
+      <input type="radio" name="q2" value="A"> A) Python <br>
+      <input type="radio" name="q2" value="B"> B) HTML <br>
+      <input type="radio" name="q2" value="C"> C) C++ <br>
+      <input type="radio" name="q2" value="D"> D) Java <br>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+      <p>3. Which planet is called the Red Planet?</p>
+      <input type="radio" name="q3" value="A"> A) Venus <br>
+      <input type="radio" name="q3" value="B"> B) Jupiter <br>
+      <input type="radio" name="q3" value="C"> C) Mars <br>
+      <input type="radio" name="q3" value="D"> D) Saturn <br>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+      <p>4. What does CSS stand for?</p>
+      <input type="radio" name="q4" value="A"> A) Computer Style Sheets <br>
+      <input type="radio" name="q4" value="B"> B) Cascading Style Sheets <br>
+      <input type="radio" name="q4" value="C"> C) Creative Styling System <br>
+      <input type="radio" name="q4" value="D"> D) Colorful Style Syntax <br>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question">
+      <p>5. Which number is prime?</p>
+      <input type="radio" name="q5" value="A"> A) 4 <br>
+      <input type="radio" name="q5" value="B"> B) 6 <br>
+      <input type="radio" name="q5" value="C"> C) 9 <br>
+      <input type="radio" name="q5" value="D"> D) 7 <br>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    const answers = { q1: "B", q2: "B", q3: "C", q4: "B", q5: "D" };
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // stop page refresh
+      let score = 0;
+
+      // check answers
+      for (let i = 1; i <= 5; i++) {
+        const q = "q" + i;
+        const selected = document.querySelector('input[name="'+q+'"]:checked');
+        if (selected && selected.value === answers[q]) {
+          score++;
+        }
+      }
+
+      document.getElementById("result").textContent = "Your score is: " + score + " / 5";
+    });
+  </script>
+
+</body>
+</html>
